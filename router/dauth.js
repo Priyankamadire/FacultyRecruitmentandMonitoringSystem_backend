@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const clgauthenticate = require('../middleware/clgauthenticate'); // Importing the authentication middleware
 
