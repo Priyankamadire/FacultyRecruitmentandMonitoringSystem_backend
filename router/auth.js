@@ -8,6 +8,8 @@ const cors = require('cors');
 const Apply = require("../model/ApplySchema"); // Import the Apply schema
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
+const app = express();
+
 // router.use(cors({
 //     origin: 'http://localhost:3000',
 //     credentials: true 
@@ -75,7 +77,8 @@ router.post('/signin', async (req, res) => {
         res.cookie("jwtoken", token, {
             expires: new Date(Date.now() + 25892000000), // Expires in 1 year
             httpOnly: true,
-            secure: true
+            sameSite: app.get("env") === "development" ? true : "none",
+            secure: app.get("env") === "development" ? false : true,
         });
 
         

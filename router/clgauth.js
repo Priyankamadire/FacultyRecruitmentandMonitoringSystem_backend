@@ -8,13 +8,10 @@ const cors = require('cors');
 const Postjob = require("../model/PostJobSchema");
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
+const app = express();
 // router.use(cors({
 //     origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
 //     credentials: true 
-// // }));
-// router.use(cors({
-//     origin: 'http://localhost:3000',
-//     credentials: true
 // }));
 const corsOptions = {
     origin: true, // Allow requests from any origin
@@ -22,7 +19,6 @@ const corsOptions = {
   };
 // router.use(cors());
 router.use(cors(corsOptions));
-
 router.post('/clg-register', async (req, res) => {
     const { clgname, clgemail, clgphone, clgcode, password, cpassword } = req.body;
     if ( !clgname || !clgemail || !clgphone || !clgcode  || !password ||!cpassword) {
@@ -68,13 +64,18 @@ router.post('/clg-signin', async (req, res) => {
         const token = await userLogin.generateAuthToken();
 
         // Set JWT token cookie
+        // res.cookie("jwt_token", token, {
+        //     expires: new Date(Date.now() + 25892000000), // Expires in 1 year
+        //     httpOnly: true,
+        //     secure: true
+        //     // You may want to add secure: true if you're using HTTPS
+        // });
         res.cookie("jwt_token", token, {
             expires: new Date(Date.now() + 25892000000), // Expires in 1 year
             httpOnly: true,
-            secure: true
-            // You may want to add secure: true if you're using HTTPS
+           sameSite: app.get("env") === "development" ? true : "none",
+      secure: app.get("env") === "development" ? false : true,
         });
-
         
         
 
