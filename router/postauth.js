@@ -14,10 +14,20 @@ const Clg = require("../model/clgSchema"); // Import Clg model
 const middleware = require("../middleware/authenticate");
 const authenticate = require('../middleware/clgauthenticate');
 router.use(cookieParser());
-router.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
-    credentials: true
-}));
+// router.use(cors({
+//     origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+//     credentials: true
+// }));
+// router.use(cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true
+// }));
+const corsOptions = {
+    origin: true, // Allow requests from any origin
+    credentials: true, // Allow credentials to be included in requests
+  };
+// router.use(cors());
+router.use(cors(corsOptions));
 router.post("/postingjob", clgauthenticate, async (req, res) => {
     try {
         const {  postavailable, qualification, experience, department, jobid, date } = req.body;

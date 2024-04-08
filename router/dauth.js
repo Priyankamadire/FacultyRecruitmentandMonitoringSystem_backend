@@ -8,10 +8,20 @@ const clgauthenticate = require('../middleware/clgauthenticate'); // Importing t
 const Detail = require("../model/detailSchema");
 
 router.use(cookieParser());
-router.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
-    credentials: true
-}));
+// router.use(cors({
+//     origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+//     credentials: true
+// // }));
+// router.use(cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true
+// }));
+const corsOptions = {
+    origin: true, // Allow requests from any origin
+    credentials: true, // Allow credentials to be included in requests
+  };
+// router.use(cors());
+router.use(cors(corsOptions));
 
 router.post('/wfaculty', async (req, res) => {
     try {

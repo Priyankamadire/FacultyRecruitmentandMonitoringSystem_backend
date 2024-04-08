@@ -12,11 +12,17 @@ router.use(cookieParser());
 //     origin: 'http://localhost:3000',
 //     credentials: true 
 // }));
-// router.use(cors()); 
-router.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
-    credentials: true 
-}));
+const corsOptions = {
+    origin: true, // Allow requests from any origin
+    credentials: true, // Allow credentials to be included in requests
+  };
+// router.use(cors());
+router.use(cors(corsOptions));
+
+// router.use(cors({
+//     origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+//     credentials: true 
+// }));
 
 router.get('/',(req,res)=>{
     res.send(`hi hello router`);

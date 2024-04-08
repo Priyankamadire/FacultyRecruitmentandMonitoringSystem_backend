@@ -13,11 +13,20 @@ const PORT = process.env.PORT || 5000; // Added default port
 
 // Middleware to enable CORS
 // const cors = require('cors');
-app.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app', // Replace with your frontend URL
-    credentials: true // Allow credentials (cookies) to be sent
-}));
+// app.use(cors({
+//     origin: 'http://localhost:3000', // Replace with your frontend URL
+//     credentials: true // Allow credentials (cookies) to be sent
+// }));
 // app.use(cors());
+const corsOptions = {
+    origin: true, 
+    credentials: true,  
+  };
+  
+  // Apply CORS middleware with options
+  app.use(cors(corsOptions));
+  
+  
 
 
 app.use(express.json());
