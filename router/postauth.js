@@ -218,6 +218,23 @@ router.get("/clgjobs/:id", clgauthenticate, async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+router.get("/alljobs", async (req, res) => {
+    try {
+        // Retrieve all job posts from the database
+        const allJobs = await Postjob.find();
+
+        // Check if there are any job posts
+        if (!allJobs || allJobs.length === 0) {
+            return res.status(404).json({ message: "No jobs found" });
+        }
+
+        // Return the list of job posts
+        res.status(200).json({ jobs: allJobs });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 // Assuming you have imported necessary dependencies and set up your Express app
 router.get("/clgjobs",clgauthenticate, async (req, res) => {
