@@ -14,7 +14,7 @@ router.use(cookieParser());
 // }));
 // router.use(cors()); 
 router.use(cors({
-    origin: 'https://faculty-recruitment-and-monitoring-system-frontend-anbfs3l70.vercel.app',
+    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
     credentials: true 
 }));
 
