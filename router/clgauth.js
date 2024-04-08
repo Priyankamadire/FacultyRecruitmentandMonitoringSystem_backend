@@ -71,6 +71,7 @@ router.post('/clg-signin', async (req, res) => {
         res.cookie("jwt_token", token, {
             expires: new Date(Date.now() + 25892000000), // Expires in 1 year
             httpOnly: true,
+            secure: true
             // You may want to add secure: true if you're using HTTPS
         });
 
