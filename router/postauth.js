@@ -15,7 +15,7 @@ const middleware = require("../middleware/authenticate");
 const authenticate = require('../middleware/clgauthenticate');
 router.use(cookieParser());
 router.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+    origin: 'https://faculty-recruitment-and-monitoring-system-frontend-anbfs3l70.vercel.app',
     credentials: true
 }));
 router.post("/postingjob", clgauthenticate, async (req, res) => {

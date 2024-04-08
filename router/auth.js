@@ -8,8 +8,13 @@ const cors = require('cors');
 const Apply = require("../model/ApplySchema"); // Import the Apply schema
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
+// router.use(cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true 
+// }));
+// router.use(cors()); 
 router.use(cors({
-    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+    origin: 'https://faculty-recruitment-and-monitoring-system-frontend-anbfs3l70.vercel.app',
     credentials: true 
 }));
 
