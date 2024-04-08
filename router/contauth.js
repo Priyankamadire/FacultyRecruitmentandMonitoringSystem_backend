@@ -3,6 +3,15 @@ const router = express.Router();
 const Contact = require('../model/ContactSchema');
 const authenticate = require('../middleware/authenticate')
 const clgauthenticate = require('../middleware/clgauthenticate')
+const cors = require('cors');
+const Postjob = require("../model/PostJobSchema");
+const cookieParser = require('cookie-parser');
+router.use(cookieParser());
+router.use(cors({
+    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
+    credentials: true 
+}));
+
 router.post('/contacts', async (req, res) => {
     try {
         const { name, email, message } = req.body;

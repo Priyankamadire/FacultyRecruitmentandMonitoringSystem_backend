@@ -9,7 +9,7 @@ const Detail = require("../model/detailSchema");
 
 router.use(cookieParser());
 router.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
     credentials: true
 }));
 

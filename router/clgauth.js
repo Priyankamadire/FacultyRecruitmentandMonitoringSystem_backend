@@ -9,7 +9,7 @@ const Postjob = require("../model/PostJobSchema");
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
 router.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://faculty-recruitmentand-monitoring-system-frontend.vercel.app',
     credentials: true 
 }));
 
