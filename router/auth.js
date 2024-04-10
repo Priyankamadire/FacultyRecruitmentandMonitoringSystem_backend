@@ -32,19 +32,22 @@ router.get('/',(req,res)=>{
 router.post('/register', async (req, res) => {
     const { name, email, phone, qualification,experience, password, cpassword } = req.body;
     if ( !name || !email || !phone || !qualification || !experience || !password ||!cpassword) {
-        return res.status(422).json({ error: "Please fill in all the fields properly" });
+        return res.status(428).json({ error: "Please fill in all the fields properly" });
     }
 
     try {
         const userExist = await User.findOne({ email: email });
         if (userExist) {
-            return res.status(422).json({ error: "Email already exists" });
+            return res.status(488).json({ error: "Email already exists" });
         }
-
+        else if(password != cpassword){
+            return res.status(422).json({error:"enter correct password"});
+        }
         const user = new User({ name, email, phone, qualification,experience, password, cpassword });
         await user.save();
         res.status(201).json({ message: "User registered successfully" });
-    } catch (err) {
+    }
+     catch (err) {
         console.error(err);
         res.status(500).json({ error: "Failed to register" });
     }

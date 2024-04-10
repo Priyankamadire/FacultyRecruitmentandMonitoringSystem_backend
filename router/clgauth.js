@@ -28,7 +28,10 @@ router.post('/clg-register', async (req, res) => {
     try {
         const userExist = await Clg.findOne({ clgemail: clgemail });
         if (userExist) {
-            return res.status(422).json({ error: "Email already exists" });
+            return res.status(423).json({ error: "Email already exists" });
+        }
+        else if(password != cpassword){
+            return res.status(425).json({error:"enter correct password"});
         }
 
         const clg = new Clg({clgname, clgemail, clgphone, clgcode, password, cpassword });
